@@ -31,11 +31,20 @@ class PortfoliosController < ApplicationController
 	        format.json { render :show, status: :ok, location: @blog }
 	      else
 	        format.html { render :edit }
-	        format.json { render json: @portfolio_items.errors, status: :unprocessable_entity }
+	        # format.json { render json: @portfolio_items.errors, status: :unprocessable_entity }
 	      end
 	    end
   	end
   	def show
+  		#perform the lookup
   		@portfolio_item = Portfolio.find(params[:id])
+  	end
+  	def destroy
+  		@portfolio_item = Portfolio.find(params[:id])
+    	@portfolio_item.destroy
+    		respond_to do |format|
+      		format.html { redirect_to portfolios_path, notice: 'Blog was successfully destroyed.' }
+      		# format.json { head :no_content }
+    	end
   	end
 end
