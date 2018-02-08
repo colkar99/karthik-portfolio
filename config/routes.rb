@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   		get :toggle_status
   	end
   end
+
+  # get 'query/:else', to: 'pages#somethigdo'
+  # get 'post/*missing', to: 'controller#action' => anything after post will redirect to specific page
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
