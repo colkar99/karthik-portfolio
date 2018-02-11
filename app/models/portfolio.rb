@@ -4,5 +4,13 @@ class Portfolio < ApplicationRecord
 	def self.angular
 		where(subtitle: "Angular")
 	end
-	scope: ruby_on_rails_portfolios_item,-> {where(subtitle: "ruby on rails")}
+	scope :ruby_on_rails_portfolios_item,-> {where(subtitle: "ruby on rails")}
+	after_initialize :set_defaults
+
+	def set_defaults
+		self.main_image ||= "http://via.placeholder.com/600x400"
+		self.thumb_image ||= "http://via.placeholder.com/350x200"
+	end
 end
+# ||= this lines shows that if that value is nill then assign this value
+#scope this line is used to get database value and used on controller
